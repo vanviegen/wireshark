@@ -315,7 +315,7 @@ dissect_websocket(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *dat
     return 0;
   }
 
-  // We've got the entire message!
+  /* We've got the entire message! */
   
   col_set_str(pinfo->cinfo, COL_PROTOCOL, "WebSocket");
   col_set_str(pinfo->cinfo, COL_INFO, "WebSocket");
@@ -360,7 +360,7 @@ dissect_websocket(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, void *dat
   tvb_payload = tvb_new_subset_remaining(tvb, payload_offset);
   dissect_websocket_payload(tvb_payload, pinfo, tree, ws_tree, opcode, payload_length, mask, masking_key);
 
-  // Call this function recursively, to see if we have enough data to parse another websocket message
+  /* Call this function recursively, to see if we have enough data to parse another websocket message */
   
   recurse_offset = payload_offset + payload_length;
   if(length > recurse_offset){
